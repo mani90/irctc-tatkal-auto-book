@@ -1,1 +1,2 @@
-# irctc-tatkal-auto-book
+# IRCTC Tatkal ticket auto booking Chrome extention
+Manikandan
