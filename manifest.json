@@ -1,0 +1,32 @@
+{
+  "background" : {
+    "persistant" : true,
+    "scripts" : ["popup.js"]
+  },
+  "icons": {
+    "128":"train.png",
+    "48":"train.png",
+    "16":"train.png"
+  },
+  "browser_action": {
+    "default_icon" : {
+      "128":"train.png",
+      "48":"train.png",
+      "16":"train.png"
+    }
+  },
+
+  "current_locale": "10",
+  "description": " Fastest Way to book tatkal ticket for free",
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "manifest_version": 2,
+  "name": "Free IRCTC tatkal autobook",
+  "permissions": [ "*://www.irctc.co.in/*", "storage" ],
+  "version" : "1.0.0",
+  "content_scripts": [
+    {
+      "matches": ["*://www.irctc.co.in/*","https://www.irctc.co.in/eticketing/loginHome.jsf","https://www.irctc.co.in/eticketing/trainbetweenstns.jsf*", "https://www.irctc.co.in/eticketing/AlternateAvailability.jsf*"],
+      "js": ["crypto.js", "scripts/jquery.js", "irctc_captcha.js", "login.js", "train.js", "bank.js"]
+    }
+  ]
+}

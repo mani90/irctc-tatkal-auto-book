@@ -1,0 +1,73 @@
+body {
+    font-family:'Open Sans', serif;
+    background-color:#F7F7F7;
+    background-image:url(wall.png);
+}
+.well {
+    background-color:#fff;
+    margin:1em auto;
+    max-width:500px;
+}
+.irctc {
+    max-width: 100%;
+}
+h2 {
+    font-size:20px;
+    font-family:'Open Sans', serif;
+}
+h1 {
+    color:#444;
+    font-family:'Mate SC', serif;
+    font-size:45px;
+    text-align:center;
+}
+p {
+    font-size: .95em;
+    margin-bottom: 1.8em;
+}
+.social {
+    margin:1em auto;
+    width:310px;
+    font-size:.8em;
+}
+.social-share {
+    margin-top: 18px;
+    display:inline;
+    padding-right:20px;
+}
+.ads {
+    margin: 2em 0;
+}
+.ads2 {
+    margin: 10px 0;
+}
+.form-control {
+    padding: 4px 6px;
+    height: 30px;
+    border-radius: 3px;
+    font-size: 12px;
+}
+.col-lg-1, .col-lg-2 {
+    padding-left: 2px;
+}
+.row {
+    margin: 1em;
+}
+.row-heading {
+    margin: 1em 0;
+}
+input[type="checkbox"] {
+    margin: 6px 0 0 20px;
+}
+b, strong {
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #999;
+    font-size: .85em;
+}
+hr {
+    margin-top: 10px;
+}
+
+.socialtop { margin: 0 auto; width: 230px; overflow: hidden;}
+.fbBIO{width:100px;}.twBIO{position:relative; top:4px;}

@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<!-- saved from url=(0024)https://ctrlq.org/irctc/ -->
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Book Indian Rail Tickets Faster on IRCTC - Magic Autofill</title>
+        <meta name="author" content="Amit Agarwal">
+        <meta name="description" content="The Indian Railways IRCTC website opens up for train reservations at 10 AM and the rail tickets are booked within minutes especially under the Tatkal Scheme. Magic Autofill can help you book tickets faster.">
+        <link rel="stylesheet" href="scripts/jqueryui.css" />
+
+        <link href="scripts/irctc.css" rel="stylesheet">
+        <link href="scripts/css.css" rel="stylesheet" type="text/css">
+
+        <link href="scripts/style.css" rel="stylesheet">
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+    <body style="">
+        <div class="container">
+            <h1>Autofill for irctc</h1>
+            <style>
+                label {font-size:90%;}
+                input[type="radio"], input[type="checkbox"] {margin-left: 20px; }
+            </style>
+
+            <div class="well irctc login">
+                <div class="row row-heading">
+                    <div class="col-md-3">
+                        <h4>LOGIN DETAILS</h4>
+                        <p>Enter details of your IRCTC Usernmae and Password.</p>
+                    </div>
+                </div>
+                <div class="row">
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">Username:</label>
+                            <div class="col-lg-4">
+                                <input type="text" class="form-control" id="username" maxlength="225"  name="username">
+                            </div>
+                        </div>
+                </div>
+                 <div class="row">
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">Password:</label>
+                            <div class="col-lg-4">
+                                <input type="password" id="password" class="form-control" maxlength="225"  name="password">
+                            </div>
+                        </div>
+                </div>
+
+                <div class="alert alert-danger" id="login-error" style="display:none">Fields cannot be empty!</div>
+            </div>
+            <div class="well irctc login">
+                <div class="row row-heading">
+                    <div class="col-md-3">
+                        <h4>TRIP DETAILS</h4>
+                        <p>Enter details of your trip details.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-lg-6">
+                        <label class="col-lg-2 control-label">From:</label>
+                        <div class="col-lg-10">
+
+                            <input type="text" class="form-control js-typeahead-station" id="from" maxlength="225"  name="from">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label class="col-lg-2 control-label">To:</label>
+                        <div class="col-lg-10">
+                            <input type="text" id="to" class="form-control js-typeahead-station" maxlength="225"  name="to">
+                        </div>
+                    </div>
+                </div>
+                 <div class="row ">
+                    <div class="form-group col-lg-6">
+                        <label class="col-lg-2 control-label">Date:</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="date" placeholder="MM/DD/YYY" maxlength="225"  name="date">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label class="col-lg-2 control-label">Train Number:</label>
+                        <div class="col-lg-10">
+                            <input type="text" id="trainNumber" class="form-control" maxlength="225"  name="trainNumber">
+                        </div>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="form-group col-lg-6">
+                        <label class="col-lg-2 control-label">Class:</label>
+                        <div class="col-lg-10">
+                            <select class="form-control" id="class">
+                                <option value="SL" default>Sleeper</option>
+                                <option value="3A">3 AC</option>
+                                <option value="2A">2 AC</option>
+                                <option value="1A">1 AC</option>
+                                <option value="2S">Second Seating</option>
+                                <option value="CC">Chair Car</option>
+                                <option value="FC">First Class</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label class="col-lg-2 control-label">Quota:</label>
+                        <div class="col-lg-10">
+                            <select class="form-control" id="quota">
+                                <option value="TQ">Tatkal</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alert alert-danger" id="trip-error" style="display:none">Fields cannot be empty!</div>
+            </div>
+            <div class="well irctc adult">
+                    <div class="row row-heading">
+                        <div class="col-md-3">
+                            <h4>ADULT PASSENGERS</h4>
+                            <p>Enter details of adult passengers for whom ticket is to be issued.</p>
+                        </div>
+                    </div>
+
+                    <div class="p-error row" style="color:red;"></div>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <strong>Passenger<br>Name</strong>
+                        </div>
+                        <div class="col-lg-1">
+                            <strong>Age<br></strong>
+                        </div>
+                        <div class="col-lg-2">
+                            <strong>Gender<br>M/F</strong>
+                        </div>
+                        <div class="col-lg-2">
+                            <strong>Choose<br>Berth</strong>
+                        </div>
+                        <div class="col-lg-1">
+                            <strong>Food<br>Choice</strong>
+                        </div>
+                        <div class="col-lg-1">
+                            <strong>Senior<br>Citizen</strong>
+                        </div>
+
+                        <div class="col-lg-1">
+                            <strong>Aadhaar<br>Card</strong>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <input type="text" class="form-control u-name" placeholder="Passenger #1" pattern=".{3,16}" required="" title="Name should be between 3 and 16 characters" minlength="3" maxlength="16">
+                        </div>
+                        <div class="col-lg-1">
+                            <input type="text" class="form-control col-lg-1 u-age" >
+                        </div>
+                        <div class="col-lg-2">
+                            <select class="form-control col-lg-1 u-gender">
+                                <option value=" ">Select</option>
+                                <option value="M">Male</option>
+                                <option value="F">Female</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-2">
+                            <select class="form-control col-lg-2 u-berth">
+                                <option value="  ">No Preference</option>
+                                <option value="LB">LOWER</option>
+                                <option value="MB">MIDDLE</option>
+                                <option value="UB">UPPER</option>
+                                <option value="SL">SIDE LOWER</option>
+                                <option value="SU">SIDE UPPER</option>
+                                <option value="WS">WINDOW SIDE</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-1">
+                            <select class="form-control u-meal" >
+                                <option value=" ">Select</option>
+                                <option value="V">Veg</option>
+                                <option value="N">Non-Veg</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-1">
+                            <input type="checkbox" class="u-concession" value="checked">
+                        </div>
+
+                        <div class="col-lg-2">
+                            <input type="text" class="form-control u-aadhaar" maxlength="12" size="12" >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <input type="text" class="form-control u-name" placeholder="Passenger #2" pattern=".{3,16}" required="" title="Name should be between 3 and 16 characters" minlength="3" maxlength="16">
+                        </div>
+                        <div class="col-lg-1">
+                            <input type="text" class="form-control col-lg-1 u-age">
+                        </div>
+                        <div class="col-lg-2">
+                            <select class="form-control col-lg-1 u-gender">
+                                <option value=" ">Select</option>
+                                <option value="M">Male</option>
+                                <option value="F">Female</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-2">
+                            <select class="form-control col-lg-2 u-berth">
+                                <option value="  ">No Preference</option>
+                                <option value="LB">LOWER</option>
+                                <option value="MB">MIDDLE</option>
+                                <option value="UB">UPPER</option>
+                                <option value="SL">SIDE LOWER</option>
+                                <option value="SU">SIDE UPPER</option>
+                                <option value="WS">WINDOW SIDE</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-1">
+                            <select  class="form-control u-meal">
+                                <option value=" ">Select</option>
+                                <option value="V">Veg</option>
+                                <option value="N">Non-Veg</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-1">
+                            <input type="checkbox" class="u-concession" value="checked">
+                        </div>
+
+                        <div class="col-lg-2">
+                            <input type="text" class="form-control u-aadhaar" maxlength="12" size="12">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <input type="text" class="form-control u-name" placeholder="Passenger #3" pattern=".{3,16}" required="" title="Name should be between 3 and 16 characters" minlength="3" maxlength="16">
+                        </div>
+                        <div class="col-lg-1">
+                            <input type="text" class="form-control col-lg-1 u-age">
+                        </div>
+                        <div class="col-lg-2">
+                            <select class="form-control col-lg-1 u-gender">
+                                <option value=" ">Select</option>
+                                <option value="M">Male</option>
+                                <option value="F">Female</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-2">
+                            <select class="form-control col-lg-2 u-berth">
+                                <option value="  ">No Preference</option>
+                                <option value="LB">LOWER</option>
+                                <option value="MB">MIDDLE</option>
+                                <option value="UB">UPPER</option>
+                                <option value="SL">SIDE LOWER</option>
+                                <option value="SU">SIDE UPPER</option>
+                                <option value="WS">WINDOW SIDE</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-1">
+                            <select class="form-control u-meal">
+                                <option value=" ">Select</option>
+                                <option value="V">Veg</option>
+                                <option value="N">Non-Veg</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-1">
+                            <input type="checkbox" class="u-concession" value="checked">
+                        </div>
+
+                        <div class="col-lg-2">
+                            <input type="text" class="form-control u-aadhaar" maxlength="12" size="12">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <input type="text" class="form-control u-name" placeholder="Passenger #4" pattern=".{3,16}" required="" title="Name should be between 3 and 16 characters" minlength="3" maxlength="16">
+                        </div>
+                        <div class="col-lg-1">
+                            <input type="text" class="form-control col-lg-1 u-age">
+                        </div>
+                        <div class="col-lg-2">
+                            <select class="form-control col-lg-1 u-gender">
+                                <option value=" ">Select</option>
+                                <option value="M">Male</option>
+                                <option value="F">Female</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-2">
+                            <select class="form-control col-lg-2 u-berth">
+                                <option value="  ">No Preference</option>
+                                <option value="LB">LOWER</option>
+                                <option value="MB">MIDDLE</option>
+                                <option value="UB">UPPER</option>
+                                <option value="SL">SIDE LOWER</option>
+                                <option value="SU">SIDE UPPER</option>
+                                <option value="WS">WINDOW SIDE</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-1">
+                            <select class="form-control u-meal">
+                                <option value=" ">Select</option>
+                                <option value="V">Veg</option>
+                                <option value="N">Non-Veg</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-1">
+                            <input type="checkbox" class="u-concession" value="checked">
+                        </div>
+                        <div class="col-lg-2">
+                            <input type="text" class="form-control u-aadhaar" maxlength="12" size="12">
+                        </div>
+                    </div>
+
+
+                    <div class="alert alert-danger" id="user-error" style="display:none">Fields cannot be empty!</div>
+            </div>
+            <div class="well irctc child">
+                    <div class="row row-heading">
+                        <div class="col-md-3">
+                            <h4>CHILD PASSENGERS</h4>
+                            <p>Enter details of children below 5 years for whom ticket is not to be issued.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <strong>Child's Name</strong>
+                        </div>
+                        <div class="col-lg-3">
+                            <strong>Age</strong>
+                        </div>
+                        <div class="col-lg-2">
+                            <strong>Gender</strong>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <input type="text" class="form-control col-lg-4 c-name" placeholder="Child Passenger #1" pattern=".{3,16}" required="" title="Name should be between 3 and 16 characters" minlength="3" maxlength="16">
+                        </div>
+                        <div class="col-lg-3">
+                            <select class="form-control col-lg-3 c-age">
+                                <option value="-1" selected="selected">Select</option>
+                                <option value="0">Below one year</option>
+                                <option value="1">One year</option>
+                                <option value="2">Two years</option>
+                                <option value="3">Three years</option>
+                                <option value="4">Four years</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-2">
+                            <select class="form-control col-lg-2 c-gender">
+                                <option value=" ">Select</option>
+                                <option value="M">Male</option>
+                                <option value="F">Female</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <input type="text" class="form-control col-lg-3 c-name" placeholder="Child Passenger #2" pattern=".{3,16}" required="" title="Name should be between 3 and 16 characters" minlength="3" maxlength="16">
+                        </div>
+                        <div class="col-lg-3">
+                            <select class="form-control col-lg-3 c-age">
+                                <option value="-1" selected="selected">Select</option>
+                                <option value="0">Below one year</option>
+                                <option value="1">One year</option>
+                                <option value="2">Two years</option>
+                                <option value="3">Three years</option>
+                                <option value="4">Four years</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-2">
+                            <select class="form-control col-lg-2 c-gender">
+                                <option value=" ">Select</option>
+                                <option value="M">Male</option>
+                                <option value="F">Female</option>
+                            </select>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label">Boarding Station Code:</label>
+                            <div class="col-lg-3">
+                                <input type="text" class="form-control" maxlength="4" placeholder="e.g. NDLS" id="boardingStation">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label">Mobile Number:</label>
+                            <div class="col-lg-3">
+                                <input type="text" class="form-control u-mobile" maxlength="10">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+
+                            <input type="checkbox" id="autoUpgrade">
+                            <label class="col-lg4 xcontrol-label"> &nbsp; Consider for auto upgradation</label><br>
+
+                            <input type="checkbox" id="confirmseats">
+                            <label class="col-lg4 xcontrol-label"> &nbsp; Book only if confirm berths are allotted</label><br>
+
+                            <div class="confirmberths" style="margin-left:10px">
+                                <input type="radio" name="condition" value="3">
+                                <label> &nbsp; None</label><br>
+
+                                <input type="radio" name="condition" value="6">
+                                <label >  &nbsp; Book , only if all berths are allotted in same coach</label><br>
+
+                                <input type="radio" name="condition"  value="4">
+                                <label >  &nbsp; Book, only if at least 1 lower berth is allotted</label><br>
+
+                                <input type="radio" name="condition"  value="5">
+                                <label>  &nbsp; Book, only if 2 lower berths are allotted</label>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div class="well irctc payment">
+              <div class="row">
+                  <div class="form-group">
+                      <label class="col-lg-3 control-label">Payment Method:</label>
+                      <div class="col-lg-9">
+                          <input type="radio" name="bank" id="bank" value="NETBANKING" > &nbsp;
+                          <label for="jpBook:payOption:0">Net Banking</label> &nbsp;&nbsp;
+                          <input type="radio" name="bank" id="bank" value="CREDIT_CARD" > &nbsp;
+                          <label for="jpBook:payOption:1"> Payment Gateway / Credit Card</label> &nbsp;&nbsp;
+                          <input type="radio" name="bank" id="bank" value="DEBIT_CARD" > &nbsp;
+                          <label for="jpBook:payOption:2"> Debit Card</label> &nbsp;&nbsp;
+                          <input type="radio" name="bank" id="bank" value="CASH_CARD" > &nbsp;
+                          <label for="jpBook:payOption:4"> Cash Card</label> &nbsp;&nbsp;
+                          <input type="radio" name="bank" id="bank" value="EMI" > &nbsp;
+                          <label for="jpBook:payOption:7"> EMI</label>
+                          <input type="radio" name="bank" id="bank" value="SKIP" > &nbsp;
+                          <label for="jpBook:payOption:7"> Skip</label>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="form-group">
+                      <label class="col-lg-3 control-label" id="control-label">Payment option:</label>
+                      <div class="col-lg-9">
+                          <select id="jpBook:bankINBList" class="NETBANKING" name="jpBook:bankINBList" size="1" style="display: none;">
+                              <option value="-1">Select Bank</option>
+                              <option value="1">State Bank of India</option>
+                              <option value="10">State Bank of India and Associates</option>
+                              <option value="22">Federal Bank</option>
+                              <option value="29">Indian Bank</option>
+                              <option value="28">Union Bank of India</option>
+                              <option value="31">Andhra Bank</option>
+                              <option value="34">Punjab National Bank </option>
+                              <option value="35">Allahabad Bank</option>
+                              <option value="38">Vijaya Bank</option>
+                              <option value="39">AXIS Bank</option>
+                              <option value="36">HDFC Bank</option>
+                              <option value="37">Bank of Baroda</option>
+                              <option value="42">Karnataka Bank</option>
+                              <option value="43">Oriental Bank of Commerce</option>
+                              <option value="40">Karur Vysya Bank</option>
+                              <option value="46">Kotak Mahindra Bank</option>
+                              <option value="47">INGVysya Bank</option>
+                              <option value="44">ICICI Bank </option>
+                              <option value="45">IndusInd Bank</option>
+                              <option value="51">IMPS</option>
+                              <option value="50">Central Bank of India</option>
+                              <option value="48">Bank of India</option>
+                              <option value="54">Syndicate Bank</option>
+                              <option value="52">IDBI Bank</option>
+                              <option value="56">Corporation Bank</option>
+                              <option value="60">Yes Bank</option>
+                              <option value="64">Nepal SBI Bank Ltd.</option>
+                          </select>
+                          <select id="jpBook:bankPGList" class="CREDIT_CARD" name="jpBook:bankPGList" size="1" style="display: none;">
+                              <option value="-1">Select Bank</option>
+                              <!--<option value="4">Visa/Master Card(Powered By ICICI BANK)</option>
+                              <option value="17">Visa/Master Card(Powered By CITI BANK)</option>
+                              <option value="30">Visa/Master Card(Powered By AXIS BANK)</option>-->
+                              <option value="21">Visa/Master Card(Powered By HDFC BANK)</option>
+                              <option value="58">RuPay Card (Powered by Kotak Bank)</option>
+                              <option value="27">American Express</option>
+                          </select>
+                          <select id="jpBook:bankDCList" class="DEBIT_CARD" name="jpBook:bankDCList" size="1" style="display: block;">
+                              <option value="-1">Select Bank</option>
+                              <option value="3">State Bank of India</option>
+                              <option value="9">Punjab National Bank</option>
+                              <option value="15">Indian Bank</option>
+                              <option value="16">Union Bank of India </option>
+                              <option value="19">Bank of India</option>
+                              <option value="25">Andhra Bank</option>
+                              <option value="26">Canara Bank</option>
+                              <option value="32">CITI Bank</option>
+                              <option value="41">ICICI Bank</option>
+                              <option value="57">HDFC Bank</option>
+                          </select>
+                          <select id="jpBook:bankCCList" class="CASH_CARD" name="jpBook:bankCCList" size="1" style="display:none">
+                              <option value="-1">Select Cash card</option>
+                              <option value="23">ITZ Cash Card</option>
+                              <option value="33">I Cash Card</option>
+                              <option value="55">OXI Cash Card</option>
+                          </select>
+                          <select id="jpBook:bankEMIList" class="EMI" name="jpBook:bankEMIList" size="1" style="display:none">
+                              <option value="-1">Select Bank</option>
+                              <option value="49">CITI Bank</option>
+                          </select>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                <div class="row" id="card">
+                    <div class="col-md-4 col-md-offset-4">
+                        <div class="credit-card-div">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                            <h5 class="text-muted"> Credit Card Number <small class="text-muted">[<span class="cc-brand"></span>]</small></h5>
+                                        </div>
+                                        <div class="col-md-9 col-sm-9 col-xs-9">
+                                            <input type="text" id="cardNumber" class="form-control"/>
+                                        </div>
+
+                                    </div>
+                                    <div class="row ">
+                                        <div class="col-md-5 col-sm-5 col-xs-5">
+                                            <span class="help-block text-muted small-font"> Expiry Month / Year</span>
+                                            <input type="text" id="expiryMonth" class="form-control" placeholder="MM / YYYY" />
+                                        </div>
+
+                                        <div class="col-md-3 col-sm-3 col-xs-3">
+                                            <span class="help-block text-muted small-font">  CCV</span>
+                                            <input type="text" id="cvv" class="form-control" placeholder="CCV" />
+                                        </div>
+                                        <div class="col-md-3 col-sm-3 col-xs-3" style="margin-top:23px;">
+                                            <img src="data:image/png;base64,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" class="img-rounded" />
+                                        </div>
+                                    </div>
+                                    <div class="row ">
+                                        <div class="col-md-9 col-sm-9 col-xs-9">
+                                            <span class="help-block text-muted small-font"> Name On The Card</span>
+                                            <input type="text" id="cardName" class="form-control" placeholder="Name On The Card" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- CREDIT CARD DIV END -->
+                    </div>
+                </div>
+              </div>
+            </div>
+            <hr>
+            <div class="row text-center">
+                <p>
+                    <button type="button" class="btn btn-primary" id="save-btn" value="Save">Submit</button>
+                    <button type="reset" class="btn btn-default" id="reset-btn" value="Reset" >Reset</button>
+                </p>
+            </div>
+        </div>
+        <footer>
+            <div class="text-center social">
+                <small>© 2016-2017 <a href="http://www.codenread.com/">Manikandan</a></small>
+            </div>
+        </footer>
+        <script src="scripts/jquery.js"></script>
+        <script src="scripts/jquery.payment.js"></script>
+        <script src="scripts/bootstrap.min.js"></script>
+        <script src="scripts/jqueryui.js" ></script>
+        <script type="text/javascript" src="scripts/crypto.js"></script>
+        <script src="stations.js"></script>
+        <script src="journey.js" ></script>
+    </body>
+</html>
